@@ -1,6 +1,10 @@
-import 'dart:io';
-import 'dart:math';
-import 'dart:mirrors';
+import 'devTools/prints.dart' as print_Complet; // (Por caminho)
+// import 'package:resume/devTools/prints.dart' as printComplet; //Por package, mais facil de não ter problema com os caminhos mudando
+
+void imporUses() {
+  print_Complet.printCharName(
+      'bacaninha'); //Um jeito de resolver conflitos de funções ou classes em imports diferntes
+}
 
 String? superiorStr;
 
@@ -135,6 +139,90 @@ void listSearch() {
     return word1.compareTo(word2);
   });
   print(words);
+
+  //Matriz ou array de lista
+  var listMatrix = [
+    [1, 2],
+    [3, 4]
+  ];
+  var concatList = listMatrix.expand((element) => element);
+
+  print(concatList
+      .toList()); //É necessario a propriedade .toList() pois ao usar manipulaçõa de listas, a variável que a recebe tende a ser Iterable, que é um tipo acima da lista, caracteristica por () ao invés de []
+
+  //set
+  //Caracteristia principal é a não aceitação de valores repetidos
+  var repeatList = <int>[];
+  var nonRepeatSet = <int>{};
+
+  repeatList.add(12);
+  nonRepeatSet.add(12);
+  repeatList.add(12);
+  nonRepeatSet.add(12);
+  repeatList.add(12);
+  nonRepeatSet.add(12);
+  print(repeatList);
+  print(nonRepeatSet);
+
+  //também é possível manipular listas para set
+  print(repeatList.toSet());
+  //A manipulação é temporaria, não modifica a lista original
+
+  //Ainda no meio de manipulão e filtragem de dados
+  nonRepeatSet.add(09);
+  nonRepeatSet.add(8);
+  nonRepeatSet.add(3);
+
+  print(nonRepeatSet.difference(repeatList.toSet())); //Diferença
+  print(nonRepeatSet.intersection(repeatList.toSet())); //Intercessão
+  print(nonRepeatSet.union(repeatList.toSet())); //União
+
+  //Ainda no set que é um interable, podemos procurar por um elemento com
+  nonRepeatSet.lookup(
+      3); //Ele irá retornar o objeto procurado no set, caso não ache retorna null
+  //No caso de string ele não é case sensitive, o que facilita sua busca
+
+  //Map
+  var mapInventory = <String, String>{};
+  //É o melhor esquema entre você fazer variáveis nomeadas dentro de uma lista", podendo tanto as chaves, quanto a var quanto o valor contido nullo usando ? na posição intuitiva.
+  mapInventory.putIfAbsent(
+      'mainWeapon',
+      () =>
+          'emptyHand'); //putIfAbsent está confirmando que a key mainWeapon não existe, e se não existir vai colocar emptyHand, se já existir uma mainWeapon ele não fara nada
+
+  mapInventory.update(
+      'mainWeapon',
+      (value) =>
+          'hugeSword'); //Já essa propriedade atualiza o valor que esteja dentro da key mainWeapon
+
+  //Também é possível unir o update com ifBasent para quando não está certo se vai estar sobreescrevendo, ou quer passar um valor diferente se já existir
+  mapInventory.update('secondWeapon', (value) => 'stick',
+      ifAbsent: () => 'club');
+
+  //Tendo isso em vista, a forma de pedir por um indice no map, irá passar a key, que servira como [i]
+  print(mapInventory['mainWeapon']);
+}
+
+void tryCatchConcept() {
+  try {
+    var birULaibe;
+    birULaibe = '18.90';
+    var outroLaibe = int.parse(birULaibe);
+    // var outroLaibe = double.parse(birULaibe);
+    print(outroLaibe);
+
+    //Se houver uma condição especifica de uso importante para forçar um erro, pode lança-lo após a verificação
+    if (outroLaibe < 19) throw Exception();
+  } on TypeError {
+    print('Escreveu errado');
+  } catch (e, s) {
+    print('Deu erro ai meu bom');
+    print('Foi na linha $s');
+  } finally {
+    print('ACABO');
+  }
+
+  //Hierarquicamente se deve pegar de um erro especifico (1º) até um erro geral que seria o Exception, todas são excessões, já erros espescificos possuem sua ordem de precedência
 }
 
 void main() {
@@ -142,5 +230,7 @@ void main() {
   // repeat();
   // manipulation();
   // parametersConcept();
-  listSearch();
+  // listSearch();
+  // tryCatchConcept();
+  imporUses();
 }
