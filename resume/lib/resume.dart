@@ -1,10 +1,21 @@
+import 'dart:io';
+
+import 'package:resume/classes/RPG/Brutal.dart';
+import 'package:resume/classes/RPG/Character.dart';
+import 'package:resume/classes/RPG/Warrior.dart';
+
 import 'package:resume/classes/clothes/Shirt.dart';
 import 'package:resume/classes/clothes/Short.dart';
 
 void main() {
-  var nikeTShirt = Shirt.factory(name: 'Nike', size: 'M');
-  nikeTShirt.getPropertys();
-  var adidasShorts = Short.factory(name: 'Adicas', size: 'W');
+  String? name = stdin.readLineSync();
+  String? race = stdin.readLineSync();
 
-  adidasShorts.getPropertys();
+  var personagem = Warrior(name: name??= 'Cloves', type: race??= 'Gay');
+
+  if(personagem is Brutal){
+  personagem.getPropertys();
+  }
+  personagem.getPropertys();
+
 }

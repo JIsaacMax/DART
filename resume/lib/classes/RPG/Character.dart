@@ -1,8 +1,8 @@
 abstract class Character {
-  String? name;
-  String? type;
-  DateTime? creatDate;
-  int? level;
+  abstract String name;
+  abstract String type;
+  abstract final DateTime creatDate;
+  abstract int level;
   
   
 
