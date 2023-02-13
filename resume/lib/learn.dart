@@ -225,12 +225,20 @@ void tryCatchConcept() {
   //Hierarquicamente se deve pegar de um erro especifico (1º) até um erro geral que seria o Exception, todas são excessões, já erros espescificos possuem sua ordem de precedência
 }
 
+void assOperators() {
+  var nome;
+
+  //Ele faz a verificação se a variável é nula, e se for ele preenche com o que vem a seguir
+  nome ??= 'Sem nome';
+}
+
 void main() {
   // nullableUhuu();
   // repeat();
   // manipulation();
-  parametersConcept();
+  // parametersConcept();
   // listSearch();
   // tryCatchConcept();
-  imporUses();
+  // imporUses();
+  assOperators();
 }

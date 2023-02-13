@@ -1,4 +1,4 @@
-import 'package:resume/classes/clothes/Dress.dart';
+import 'package:resume/classes/RPG/clothes/Dress.dart';
 
 class Short extends Dress {
   //Atributos
